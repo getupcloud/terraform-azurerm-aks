@@ -6,6 +6,12 @@ This Terraform module deploys a Kubernetes cluster on Azure using AKS (Azure Kub
 
 -> **NOTE:** If you have not assigned `client_id` or `client_secret`, A `SystemAssigned` identity will be created.
 
+## Notice on Upgrade to V6.x
+
+We've added a CI pipeline for this module to speed up our code review and to enforce a high code quality standard, if you want to contribute by submitting a pull request, please read [Pre-Commit & Pr-Check & Test](#pre-commit-pr-check-test) section, or your pull request might be rejected by CI pipeline.
+
+A pull request will be reviewed when it has passed Pre Pull Request Check in the pipeline, and will be merged when it has passed the acceptance tests. Once the ci Pipeline failed, please read the pipeline's output, thanks for your cooperation.
+
 ## Notice on Upgrade to V5.x
 
 V5.0.0 is a major version upgrade and a lot of breaking changes have been introduced. Extreme caution must be taken during the upgrade to avoid resource replacement and downtime by accident.
@@ -142,7 +148,7 @@ $env:ARM_CLIENT_ID="<service_principal_appid>"
 $env:ARM_CLIENT_SECRET="<service_principal_password>"
 ```
 
-We provide a docker image to run the pre-commit checks and tests for you: mcr.microsoft.com/azterraform:latest
+We provide a docker image to run the pre-commit checks and tests for you: `mcr.microsoft.com/azterraform:latest`
 
 To run the pre-commit task, we can run the following command:
 
