@@ -141,6 +141,26 @@ resource "azurerm_kubernetes_cluster" "main" {
       }
     }
   }
+  maintenance_window {
+    dynamic "allowed" {
+      for_each = var.allowed_maintenance_windows
+
+      content {
+        day   = allowed.value.day
+        hours = allowed.value.hours
+      }
+    }
+
+    dynamic "not_allowed" {
+      for_each = var.not_allowed_maintenance_windows
+
+      content {
+        start = not_allowed.value.start
+        end   = not_allowed.value.end
+      }
+    }
+  }
+
   network_profile {
     network_plugin     = var.network_plugin
     dns_service_ip     = var.net_profile_dns_service_ip

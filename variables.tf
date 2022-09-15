@@ -450,3 +450,35 @@ variable "vnet_subnet_id" {
   description = "(Optional) The ID of a Subnet where the Kubernetes Node Pool should exist. Changing this forces a new resource to be created."
   default     = null
 }
+
+###########################################################
+## New features ###########################################
+###########################################################
+
+variable "allowed_maintenance_windows" {
+  type = list(object({
+    day   = string
+    hours = list(number)
+  }))
+  description = "(Optional) List of allowed Maintenance Windows for AKS."
+  default = [
+    {
+      day   = "Saturday"
+      hours = [01]
+    },
+    {
+      day   = "Sunday"
+      hours = [01]
+    }
+  ]
+}
+
+variable "not_allowed_maintenance_windows" {
+  type = list(object({
+    start = string
+    end   = string
+  }))
+  description = "(Optional) The start and end of a time span, formatted as an RFC3339 (2022-01-01T00:00:00Z) string."
+  default     = []
+}
+
