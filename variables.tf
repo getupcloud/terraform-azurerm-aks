@@ -482,3 +482,9 @@ variable "not_allowed_maintenance_windows" {
   default     = []
 }
 
+variable "agents_taints" {
+  type        = list(string)
+  description = "(Optional) A mapping of taints to assign to the Node Pool."
+  default     = []
+}
+

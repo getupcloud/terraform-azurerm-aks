@@ -49,6 +49,7 @@ resource "azurerm_kubernetes_cluster" "main" {
       min_count                    = null
       node_count                   = var.agents_count
       node_labels                  = var.agents_labels
+      node_taints                  = var.agents_taints
       only_critical_addons_enabled = var.only_critical_addons_enabled
       orchestrator_version         = var.orchestrator_version
       os_disk_size_gb              = var.os_disk_size_gb
@@ -72,6 +73,7 @@ resource "azurerm_kubernetes_cluster" "main" {
       max_pods                     = var.agents_max_pods
       min_count                    = var.agents_min_count
       node_labels                  = var.agents_labels
+      node_taints                  = var.agents_taints
       only_critical_addons_enabled = var.only_critical_addons_enabled
       orchestrator_version         = var.orchestrator_version
       os_disk_size_gb              = var.os_disk_size_gb
@@ -160,7 +162,6 @@ resource "azurerm_kubernetes_cluster" "main" {
       }
     }
   }
-
   network_profile {
     network_plugin     = var.network_plugin
     dns_service_ip     = var.net_profile_dns_service_ip
